@@ -1,9 +1,10 @@
-import { Link } from 'react-router';
 import { Building2, Shield, CheckCircle, ArrowRight } from 'lucide-react';
 
-export function Home() {
+type HomeProps = { standalone?: boolean };
+
+export function Home({ standalone = true }: HomeProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={standalone ? 'min-h-screen bg-gray-50' : 'bg-gray-50'}>
       {/* Hero Section */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -18,19 +19,19 @@ export function Home() {
               A professionally managed UK private limited company, incorporated in 2022 and operating in online retail, information technology services, advertising, and business support activities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/about"
+              <a
+                href="#about"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#1e3a8a] text-white font-medium rounded hover:bg-[#1e40af] transition-colors"
               >
                 Learn More
                 <ArrowRight size={20} className="ml-2" />
-              </Link>
-              <Link
-                to="/contact"
+              </a>
+              <a
+                href="#contact"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-medium rounded hover:border-[#1e3a8a] hover:text-[#1e3a8a] transition-colors"
               >
                 Contact Us
-              </Link>
+              </a>
             </div>
           </div>
         </div>

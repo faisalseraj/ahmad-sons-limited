@@ -1,8 +1,10 @@
 import { Building2, MapPin, Calendar, FileText, History } from 'lucide-react';
 
-export function About() {
+type AboutProps = { standalone?: boolean };
+
+export function About({ standalone = true }: AboutProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={standalone ? 'min-h-screen bg-gray-50' : 'bg-gray-50'}>
       {/* Page Header */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

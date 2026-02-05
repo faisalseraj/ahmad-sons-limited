@@ -1,6 +1,8 @@
 import { ShoppingCart, Monitor, Megaphone, Briefcase } from 'lucide-react';
 
-export function Services() {
+type ServicesProps = { standalone?: boolean };
+
+export function Services({ standalone = true }: ServicesProps) {
   const services = [
     {
       icon: ShoppingCart,
@@ -53,7 +55,7 @@ export function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={standalone ? 'min-h-screen bg-gray-50' : 'bg-gray-50'}>
       {/* Page Header */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -146,7 +148,7 @@ export function Services() {
               For information about our services or business collaboration opportunities, please contact us through our official channels.
             </p>
             <a
-              href="/contact"
+              href="#contact"
               className="inline-block px-6 py-3 bg-[#1e3a8a] text-white font-medium rounded hover:bg-[#1e40af] transition-colors"
             >
               Contact Us

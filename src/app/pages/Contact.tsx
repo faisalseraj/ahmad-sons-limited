@@ -1,7 +1,9 @@
 import { MapPin, Mail, Building2, Send } from 'lucide-react';
 import { useState } from 'react';
 
-export function Contact() {
+type ContactProps = { standalone?: boolean };
+
+export function Contact({ standalone = true }: ContactProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +26,7 @@ export function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={standalone ? 'min-h-screen bg-gray-50' : 'bg-gray-50'}>
       {/* Page Header */}
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

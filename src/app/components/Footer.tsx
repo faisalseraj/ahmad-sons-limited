@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import { Building2, MapPin, Mail } from 'lucide-react';
 
 export function Footer() {
@@ -45,15 +44,15 @@ export function Footer() {
               <h3 className="font-semibold text-lg">Information</h3>
             </div>
             <nav className="flex flex-col gap-2 text-sm text-blue-100">
-              <Link to="/about" className="hover:text-white transition-colors">
+              <a href="#about" className="hover:text-white transition-colors">
                 About Us
-              </Link>
-              <Link to="/services" className="hover:text-white transition-colors">
+              </a>
+              <a href="#services" className="hover:text-white transition-colors">
                 Our Services
-              </Link>
-              <Link to="/contact" className="hover:text-white transition-colors">
+              </a>
+              <a href="#contact" className="hover:text-white transition-colors">
                 Contact
-              </Link>
+              </a>
               <a href="#" className="hover:text-white transition-colors">
                 Privacy Policy
               </a>
