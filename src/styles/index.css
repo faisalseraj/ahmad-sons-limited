@@ -6,19 +6,112 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hero gradient + subtle pattern */
+/* Hero: rich gradient + decorative blobs + grid */
 .brand-hero-bg {
-  background-color: var(--brand-bg);
+  background: linear-gradient(
+    165deg,
+    var(--brand-hero-from) 0%,
+    var(--brand-hero-via) 40%,
+    var(--brand-hero-to) 100%
+  );
+  background-attachment: scroll;
+}
+
+.brand-hero-glow {
   background-image:
-    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(13, 148, 136, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(15, 23, 42, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, var(--brand-surface) 0%, var(--brand-bg) 100%);
+    radial-gradient(ellipse 100% 80% at 90% 10%, rgba(13, 148, 136, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 10% 90%, rgba(13, 148, 136, 0.15) 0%, transparent 45%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(15, 23, 42, 0.4) 0%, transparent 55%);
+  pointer-events: none;
 }
 
 .brand-hero-pattern {
-  background-image: radial-gradient(circle at 1px 1px, var(--brand-border) 1px, transparent 0);
-  background-size: 32px 32px;
-  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Decorative blob shapes for hero */
+.brand-hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.brand-hero-blob-1 {
+  width: 320px;
+  height: 320px;
+  background: rgba(13, 148, 136, 0.5);
+  top: -80px;
+  right: -80px;
+}
+.brand-hero-blob-2 {
+  width: 240px;
+  height: 240px;
+  background: rgba(20, 184, 166, 0.4);
+  bottom: 20%;
+  left: -60px;
+}
+.brand-hero-blob-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(15, 23, 42, 0.6);
+  top: 50%;
+  right: 15%;
+}
+
+/* Section backgrounds with subtle graphics */
+.section-bg-soft {
+  background-color: var(--brand-bg);
+  background-image: radial-gradient(circle at 100% 0%, rgba(13, 148, 136, 0.06) 0%, transparent 40%);
+}
+
+.section-bg-elevated {
+  background-color: var(--brand-bg-soft);
+  background-image:
+    radial-gradient(circle at 0% 100%, rgba(15, 23, 42, 0.04) 0%, transparent 35%),
+    radial-gradient(circle at 100% 50%, rgba(13, 148, 136, 0.05) 0%, transparent 40%);
+}
+
+.section-bg-white {
+  background-color: var(--brand-surface);
+  background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(13, 148, 136, 0.04) 0%, transparent 50%);
+}
+
+/* Info card with gradient border and inner glow */
+.info-card-wrap {
+  position: relative;
+  padding: 2px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.25), rgba(15, 23, 42, 0.08), rgba(13, 148, 136, 0.15));
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+}
+.info-card-wrap .info-card-inner {
+  background: var(--brand-surface);
+  border-radius: calc(1rem - 2px);
+  padding: 1.5rem;
+  height: 100%;
+}
+
+/* Info block with left accent and soft shadow */
+.info-block-accent {
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 4px solid var(--brand-accent);
+  background: linear-gradient(90deg, rgba(13, 148, 136, 0.04) 0%, transparent 100%);
+  border-radius: 0 0.75rem 0.75rem 0;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+/* Highlight box for key stats / compliance */
+.highlight-box {
+  background: linear-gradient(145deg, var(--brand-surface) 0%, var(--brand-icon-bg) 100%);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* Section accent strip */

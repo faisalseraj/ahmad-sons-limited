@@ -6,30 +6,34 @@ export function Home({ standalone = true }: HomeProps) {
   return (
     <div className={standalone ? 'min-h-screen bg-brand-bg' : 'bg-brand-bg'}>
       {/* Hero Section */}
-      <section className="relative brand-hero-bg border-b border-brand-border overflow-hidden">
-        <div className="absolute inset-0 brand-hero-pattern pointer-events-none" aria-hidden />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <section className="relative brand-hero-bg overflow-hidden min-h-[28rem] flex items-center">
+        <div className="absolute inset-0 brand-hero-glow" aria-hidden />
+        <div className="absolute inset-0 brand-hero-pattern" aria-hidden />
+        <div className="brand-hero-blob brand-hero-blob-1" aria-hidden />
+        <div className="brand-hero-blob brand-hero-blob-2" aria-hidden />
+        <div className="brand-hero-blob brand-hero-blob-3" aria-hidden />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full">
           <div className="max-w-3xl">
-            <div className="inline-block px-4 py-2 bg-brand-icon-bg text-brand-accent text-sm font-medium rounded-full mb-6">
+            <div className="inline-block px-4 py-2 bg-white/10 text-teal-200 text-sm font-medium rounded-full mb-6 backdrop-blur-sm border border-white/10">
               UK Registered Private Limited Company
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-text mb-6 leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-sm">
               AHMAD SONS LIMITED
             </h1>
-            <p className="text-xl text-brand-text-muted mb-8 leading-relaxed">
+            <p className="text-xl text-slate-200 mb-8 leading-relaxed max-w-2xl">
               A professionally managed UK private limited company, incorporated in 2022 and operating in online retail, information technology services, advertising, and business support activities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#about"
-                className="inline-flex items-center justify-center px-6 py-3 bg-brand-accent text-white font-medium rounded-lg hover:bg-brand-accent-hover transition-colors shadow-sm"
+                className="inline-flex items-center justify-center px-6 py-3 bg-brand-accent text-white font-medium rounded-lg hover:bg-brand-accent-hover transition-colors shadow-lg shadow-black/10"
               >
                 Learn More
                 <ArrowRight size={20} className="ml-2" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-border text-brand-text font-medium rounded-lg hover:border-brand-accent hover:text-brand-accent transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-white/40 text-white font-medium rounded-lg hover:bg-white/10 hover:border-white/60 transition-colors backdrop-blur-sm"
               >
                 Contact Us
               </a>
@@ -39,12 +43,12 @@ export function Home({ standalone = true }: HomeProps) {
       </section>
 
       {/* Company Credentials */}
-      <section className="py-12 bg-brand-bg-soft">
+      <section className="py-16 section-bg-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-brand-icon-bg rounded-xl">
+            <div className="info-card-wrap">
+              <div className="info-card-inner flex items-start gap-4">
+                <div className="p-3 bg-brand-icon-bg rounded-xl flex-shrink-0">
                   <Building2 className="text-brand-icon" size={24} />
                 </div>
                 <div>
@@ -53,9 +57,9 @@ export function Home({ standalone = true }: HomeProps) {
                 </div>
               </div>
             </div>
-            <div className="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-brand-icon-bg rounded-xl">
+            <div className="info-card-wrap">
+              <div className="info-card-inner flex items-start gap-4">
+                <div className="p-3 bg-brand-icon-bg rounded-xl flex-shrink-0">
                   <CheckCircle className="text-brand-icon" size={24} />
                 </div>
                 <div>
@@ -64,9 +68,9 @@ export function Home({ standalone = true }: HomeProps) {
                 </div>
               </div>
             </div>
-            <div className="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-brand-icon-bg rounded-xl">
+            <div className="info-card-wrap">
+              <div className="info-card-inner flex items-start gap-4">
+                <div className="p-3 bg-brand-icon-bg rounded-xl flex-shrink-0">
                   <Shield className="text-brand-icon" size={24} />
                 </div>
                 <div>
@@ -80,7 +84,7 @@ export function Home({ standalone = true }: HomeProps) {
       </section>
 
       {/* Business Overview */}
-      <section className="py-16 bg-brand-surface">
+      <section className="py-16 section-bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold text-brand-text mb-4">Business Overview</h2>
@@ -89,28 +93,28 @@ export function Home({ standalone = true }: HomeProps) {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 bg-brand-bg rounded-xl border border-brand-border brand-section-accent pl-7">
+            <div className="info-block-accent p-6 py-7">
               <div className="text-sm font-medium text-brand-accent mb-2">SIC 47910</div>
               <h3 className="font-semibold text-brand-text mb-2">Online Retail</h3>
               <p className="text-sm text-brand-text-muted">
                 Retail sale via mail order houses or via Internet
               </p>
             </div>
-            <div className="p-6 bg-brand-bg rounded-xl border border-brand-border brand-section-accent pl-7">
+            <div className="info-block-accent p-6 py-7">
               <div className="text-sm font-medium text-brand-accent mb-2">SIC 62090</div>
               <h3 className="font-semibold text-brand-text mb-2">IT Services</h3>
               <p className="text-sm text-brand-text-muted">
                 Other information technology service activities
               </p>
             </div>
-            <div className="p-6 bg-brand-bg rounded-xl border border-brand-border brand-section-accent pl-7">
+            <div className="info-block-accent p-6 py-7">
               <div className="text-sm font-medium text-brand-accent mb-2">SIC 73110</div>
               <h3 className="font-semibold text-brand-text mb-2">Advertising</h3>
               <p className="text-sm text-brand-text-muted">
                 Advertising agencies
               </p>
             </div>
-            <div className="p-6 bg-brand-bg rounded-xl border border-brand-border brand-section-accent pl-7">
+            <div className="info-block-accent p-6 py-7">
               <div className="text-sm font-medium text-brand-accent mb-2">SIC 96090</div>
               <h3 className="font-semibold text-brand-text mb-2">Business Services</h3>
               <p className="text-sm text-brand-text-muted">
@@ -122,41 +126,47 @@ export function Home({ standalone = true }: HomeProps) {
       </section>
 
       {/* Compliance & Trust */}
-      <section className="py-16 bg-brand-bg-soft">
+      <section className="py-16 section-bg-elevated">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-surface p-8 md:p-12 rounded-2xl border border-brand-border shadow-sm">
+          <div className="highlight-box p-8 md:p-12 rounded-2xl">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-brand-text mb-4">Compliance & Trust</h2>
               <p className="text-lg text-brand-text-muted mb-8">
                 AHMAD SONS LIMITED is committed to operating with the highest standards of corporate governance and regulatory compliance.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                <div className="space-y-2">
-                  <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center mb-3">
-                    <CheckCircle className="text-brand-icon" size={24} />
+                <div className="space-y-2 info-card-wrap">
+                  <div className="info-card-inner space-y-2">
+                    <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center">
+                      <CheckCircle className="text-brand-icon" size={24} />
+                    </div>
+                    <h3 className="font-semibold text-brand-text">UK Registered</h3>
+                    <p className="text-sm text-brand-text-muted">
+                      Registered private limited company in England and Wales
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-brand-text">UK Registered</h3>
-                  <p className="text-sm text-brand-text-muted">
-                    Registered private limited company in England and Wales
-                  </p>
                 </div>
-                <div className="space-y-2">
-                  <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center mb-3">
-                    <Shield className="text-brand-icon" size={24} />
+                <div className="space-y-2 info-card-wrap">
+                  <div className="info-card-inner space-y-2">
+                    <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center">
+                      <Shield className="text-brand-icon" size={24} />
+                    </div>
+                    <h3 className="font-semibold text-brand-text">Regulatory Compliance</h3>
+                    <p className="text-sm text-brand-text-muted">
+                      Operating in accordance with UK business regulations
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-brand-text">Regulatory Compliance</h3>
-                  <p className="text-sm text-brand-text-muted">
-                    Operating in accordance with UK business regulations
-                  </p>
                 </div>
-                <div className="space-y-2">
-                  <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center mb-3">
-                    <Building2 className="text-brand-icon" size={24} />
+                <div className="space-y-2 info-card-wrap">
+                  <div className="info-card-inner space-y-2">
+                    <div className="w-12 h-12 bg-brand-icon-bg rounded-xl flex items-center justify-center">
+                      <Building2 className="text-brand-icon" size={24} />
+                    </div>
+                    <h3 className="font-semibold text-brand-text">Ethical Operations</h3>
+                    <p className="text-sm text-brand-text-muted">
+                      Commitment to data protection and ethical business practices
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-brand-text">Ethical Operations</h3>
-                  <p className="text-sm text-brand-text-muted">
-                    Commitment to data protection and ethical business practices
-                  </p>
                 </div>
               </div>
             </div>
