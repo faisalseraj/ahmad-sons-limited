@@ -30,11 +30,11 @@ export function Header() {
   const handleNavClick = () => setMobileMenuOpen(false);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-brand-surface border-b border-brand-border sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a href="#home" className="flex items-center">
-            <div className="text-xl font-semibold text-[#1e3a8a] tracking-tight">
+            <div className="text-xl font-bold text-brand-primary tracking-tight">
               AHMAD SONS LIMITED
             </div>
           </a>
@@ -44,10 +44,10 @@ export function Header() {
               <a
                 key={item.hash}
                 href={`#${item.hash}`}
-                className={`px-4 py-2 text-sm font-medium rounded transition-colors ${
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                   isActive(item.hash)
-                    ? 'text-[#1e3a8a] bg-blue-50'
-                    : 'text-gray-700 hover:text-[#1e3a8a] hover:bg-gray-50'
+                    ? 'text-brand-accent bg-brand-icon-bg'
+                    : 'text-brand-text-muted hover:text-brand-accent hover:bg-brand-icon-bg/50'
                 }`}
               >
                 {item.name}
@@ -57,23 +57,23 @@ export function Header() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded text-gray-700 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg text-brand-text hover:bg-brand-bg-soft"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
+          <nav className="md:hidden py-4 border-t border-brand-border">
             {navItems.map((item) => (
               <a
                 key={item.hash}
                 href={`#${item.hash}`}
                 onClick={handleNavClick}
-                className={`block px-4 py-3 text-sm font-medium rounded ${
+                className={`block px-4 py-3 text-sm font-medium rounded-lg ${
                   isActive(item.hash)
-                    ? 'text-[#1e3a8a] bg-blue-50'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    ? 'text-brand-accent bg-brand-icon-bg'
+                    : 'text-brand-text-muted hover:text-brand-accent hover:bg-brand-icon-bg/50'
                 }`}
               >
                 {item.name}
