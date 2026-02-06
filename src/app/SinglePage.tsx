@@ -1,4 +1,4 @@
-import { Layout } from './components/Layout';
+import React from 'react';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
@@ -8,7 +8,7 @@ import { Contact } from './pages/Contact';
 
 export function SinglePage() {
   return (
-    <Layout>
+    <>
       <div id="home">
         <Home standalone={false} />
       </div>
@@ -27,6 +27,6 @@ export function SinglePage() {
       <div id="contact">
         <Contact standalone={false} />
       </div>
-    </Layout>
+    </>
   );
 }

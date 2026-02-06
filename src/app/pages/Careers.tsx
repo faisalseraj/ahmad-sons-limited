@@ -177,7 +177,7 @@ export function Careers({ standalone = true }: CareersProps) {
                       <span className="font-medium text-brand-text">Email your application to:</span>
                     </p>
                     <p className="text-sm font-medium text-brand-accent">
-                      careers@ahmadsons.co.uk
+                      ahmadsonsltd@gmail.com
                     </p>
                     <p className="text-xs text-brand-text-muted mt-2">
                       Please include the position title in your email subject line

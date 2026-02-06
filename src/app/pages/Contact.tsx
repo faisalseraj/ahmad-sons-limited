@@ -1,7 +1,10 @@
-import { MapPin, Mail, Building2, Send } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { MapPin, Mail, Building2, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase } from '../../lib/supabase';
 
 type ContactProps = { standalone?: boolean };
+
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export function Contact({ standalone = true }: ContactProps) {
   const [formData, setFormData] = useState({
@@ -10,11 +13,33 @@ export function Contact({ standalone = true }: ContactProps) {
     subject: '',
     message: '',
   });
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission would be handled here
-    alert('Thank you for your message. We will respond as soon as possible.');
+    if (!supabase) {
+      setErrorMessage('Contact form is not configured. Please add Supabase credentials.');
+      setStatus('error');
+      return;
+    }
+    setStatus('sending');
+    setErrorMessage(null);
+
+    const { error } = await supabase.from('contact_submissions').insert({
+      name: formData.name.trim(),
+      email: formData.email.trim().toLowerCase(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim(),
+    });
+
+    if (error) {
+      setStatus('error');
+      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+      return;
+    }
+
+    setStatus('success');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -23,6 +48,10 @@ export function Contact({ standalone = true }: ContactProps) {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    if (status !== 'idle') {
+      setStatus('idle');
+      setErrorMessage(null);
+    }
   };
 
   return (
@@ -70,19 +99,11 @@ export function Contact({ standalone = true }: ContactProps) {
                   </div>
                   <div>
                     <h3 className="font-semibold text-brand-text mb-2">Email</h3>
-                    <p className="text-sm text-brand-text-muted mb-1">General enquiries:</p>
                     <a
-                      href="mailto:info@ahmadsons.co.uk"
+                      href="mailto:ahmadsonsltd@gmail.com"
                       className="text-sm text-brand-accent hover:underline"
                     >
-                      info@ahmadsons.co.uk
-                    </a>
-                    <p className="text-sm text-brand-text-muted mt-3 mb-1">Business enquiries:</p>
-                    <a
-                      href="mailto:business@ahmadsons.co.uk"
-                      className="text-sm text-brand-accent hover:underline"
-                    >
-                      business@ahmadsons.co.uk
+                      ahmadsonsltd@gmail.com
                     </a>
                   </div>
                 </div>
@@ -119,6 +140,22 @@ export function Contact({ standalone = true }: ContactProps) {
             <div className="lg:col-span-2">
               <div className="bg-brand-surface p-8 rounded-lg border border-brand-border">
                 <h2 className="text-2xl font-bold text-brand-text mb-6">Send us a Message</h2>
+
+                {status === 'success' && (
+                  <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 flex items-start gap-3">
+                    <CheckCircle className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                    <p className="text-sm text-green-800">
+                      Thank you for your message. We will respond as soon as possible.
+                    </p>
+                  </div>
+                )}
+                {status === 'error' && errorMessage && (
+                  <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3">
+                    <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
+                    <p className="text-sm text-red-800">{errorMessage}</p>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-brand-text-muted mb-2">
@@ -192,10 +229,20 @@ export function Contact({ standalone = true }: ContactProps) {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-accent text-white font-medium rounded hover:bg-brand-accent-hover transition-colors"
+                    disabled={status === 'sending'}
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-accent text-white font-medium rounded hover:bg-brand-accent-hover transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Send size={20} />
-                    Send Message
+                    {status === 'sending' ? (
+                      <>
+                        <Loader2 size={20} className="animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={20} />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
