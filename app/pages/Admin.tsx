@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { LogOut, Loader2, Mail, AlertCircle, Lock, Inbox, ArrowLeft } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
-import { supabase } from '../../lib/supabase';
+import { useAuth } from '@/app/context/AuthContext';
+import { supabase } from '@/lib/supabase';
 
 type Submission = {
   id: string;
@@ -63,7 +65,7 @@ export function Admin() {
       <div className="min-h-screen bg-brand-bg py-16">
         <div className="max-w-md mx-auto px-4">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center gap-1.5 text-sm text-brand-text-muted hover:text-brand-accent mb-6"
           >
             <ArrowLeft size={16} />
@@ -131,7 +133,7 @@ export function Admin() {
     <div className="min-h-screen bg-brand-bg py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center gap-1.5 text-sm text-brand-text-muted hover:text-brand-accent mb-6"
         >
           <ArrowLeft size={16} />

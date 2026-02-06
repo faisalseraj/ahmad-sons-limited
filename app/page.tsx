@@ -1,14 +1,14 @@
-import React from 'react';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Services } from './pages/Services';
-import { VisionValues } from './pages/VisionValues';
-import { Careers } from './pages/Careers';
-import { Contact } from './pages/Contact';
+import { Layout } from "./components/Layout";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Services } from "./pages/Services";
+import { VisionValues } from "./pages/VisionValues";
+import { Careers } from "./pages/Careers";
+import { Contact } from "./pages/Contact";
 
-export function SinglePage() {
+export default function MainPage() {
   return (
-    <>
+    <Layout>
       <div id="home">
         <Home standalone={false} />
       </div>
@@ -27,6 +27,6 @@ export function SinglePage() {
       <div id="contact">
         <Contact standalone={false} />
       </div>
-    </>
+    </Layout>
   );
 }

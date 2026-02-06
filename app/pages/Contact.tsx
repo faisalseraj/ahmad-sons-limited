@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
 import { MapPin, Mail, Building2, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
-import { supabase } from '../../lib/supabase';
 
 type ContactProps = { standalone?: boolean };
 
@@ -18,24 +19,25 @@ export function Contact({ standalone = true }: ContactProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!supabase) {
-      setErrorMessage('Contact form is not configured. Please add Supabase credentials.');
-      setStatus('error');
-      return;
-    }
     setStatus('sending');
     setErrorMessage(null);
 
-    const { error } = await supabase.from('contact_submissions').insert({
-      name: formData.name.trim(),
-      email: formData.email.trim().toLowerCase(),
-      subject: formData.subject.trim(),
-      message: formData.message.trim(),
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      }),
     });
 
-    if (error) {
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
       setStatus('error');
-      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+      setErrorMessage(data.error || 'Something went wrong. Please try again.');
       return;
     }
 
